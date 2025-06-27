@@ -5,16 +5,24 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build": "tsc && vite build",
+    "lint": "yarn biome lint src/",
+    "lint:fix": "yarn biome lint --apply src/",
+    "format": "yarn biome format src/",
+    "format:fix": "yarn biome format --write src/",
+    "check": "yarn biome check src/",
+    "check:fix": "yarn biome check --apply src/",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.121.41",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@tanstack/router-devtools": "^1.121.41",
+    "@tanstack/router-vite-plugin": "^1.121.41",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
