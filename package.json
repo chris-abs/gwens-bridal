@@ -7,11 +7,11 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "yarn biome lint src/",
-    "lint:fix": "yarn biome lint --apply src/",
+    "lint:fix": "yarn biome lint --write src/",
     "format": "yarn biome format src/",
     "format:fix": "yarn biome format --write src/",
     "check": "yarn biome check src/",
-    "check:fix": "yarn biome check --apply src/",
+    "check:fix": "yarn biome check --write src/",
     "preview": "vite preview"
   },
   "dependencies": {
