@@ -266,7 +266,7 @@
 
 "@biomejs/biome@^2.0.6":
   version "2.0.6"
-  resolved "https://registry.npmjs.org/@biomejs/biome/-/biome-2.0.6.tgz"
+  resolved "https://registry.yarnpkg.com/@biomejs/biome/-/biome-2.0.6.tgz#23a40836078496a0afd61981830e2cffdd0b7c6a"
   integrity sha512-RRP+9cdh5qwe2t0gORwXaa27oTOiQRQvrFf49x2PA1tnpsyU7FIHX4ZOFMtBC4QNtyWsN7Dqkf5EDbg4X+9iqA==
   optionalDependencies:
     "@biomejs/cli-darwin-arm64" "2.0.6"
@@ -280,7 +280,7 @@
 
 "@biomejs/cli-darwin-arm64@2.0.6":
   version "2.0.6"
-  resolved "https://registry.npmjs.org/@biomejs/cli-darwin-arm64/-/cli-darwin-arm64-2.0.6.tgz"
+  resolved "https://registry.yarnpkg.com/@biomejs/cli-darwin-arm64/-/cli-darwin-arm64-2.0.6.tgz#1121846e8fea18552a29b994a2db69fdd17fa4f1"
   integrity sha512-AzdiNNjNzsE6LfqWyBvcL29uWoIuZUkndu+wwlXW13EKcBHbbKjNQEZIJKYDc6IL+p7bmWGx3v9ZtcRyIoIz5A==
 
 "@biomejs/cli-darwin-x64@2.0.6":
