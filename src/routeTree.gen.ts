@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PromRouteImport } from './routes/prom'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BridalRouteImport } from './routes/bridal'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const BridalRoute = BridalRouteImport.update({
   path: '/bridal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
   '/prom': typeof PromRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
   '/prom': typeof PromRoute
@@ -59,21 +67,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
   '/prom': typeof PromRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/bridal' | '/contact' | '/prom'
+  fullPaths: '/' | '/about' | '/accessories' | '/bridal' | '/contact' | '/prom'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/bridal' | '/contact' | '/prom'
-  id: '__root__' | '/' | '/about' | '/bridal' | '/contact' | '/prom'
+  to: '/' | '/about' | '/accessories' | '/bridal' | '/contact' | '/prom'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/accessories'
+    | '/bridal'
+    | '/contact'
+    | '/prom'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessoriesRoute: typeof AccessoriesRoute
   BridalRoute: typeof BridalRoute
   ContactRoute: typeof ContactRoute
   PromRoute: typeof PromRoute
@@ -102,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BridalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -122,6 +146,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessoriesRoute: AccessoriesRoute,
   BridalRoute: BridalRoute,
   ContactRoute: ContactRoute,
   PromRoute: PromRoute,
