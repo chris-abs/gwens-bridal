@@ -1,3 +1,4 @@
+import { DressSpotlight } from "@/components/molecules/dress-spotlight";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -72,13 +73,13 @@ function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="relative w-80 h-80 mx-auto">
-              <div className="absolute inset-0 rounded-full border border-amber-300/30"></div>
-              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-purple-900/50 to-slate-800/50 overflow-hidden">
-                <div className="w-full h-full bg-slate-700 flex items-center justify-center text-white/50">
-                  Featured Bridal Gown
-                </div>
-              </div>
+            <div className="relative z-10">
+              <DressSpotlight
+                size="large"
+                title="Featured Bridal Gown"
+                borderColor="amber"
+                className="mx-auto"
+              />
 
               <div className="absolute -top-6 -left-6">
                 <svg
@@ -96,16 +97,19 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="absolute -bottom-8 -right-8 w-40 h-40">
-              <div className="absolute inset-0 rounded-full border border-purple-300/30"></div>
-              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-800/50 to-purple-900/50 overflow-hidden">
-                <div className="w-full h-full bg-slate-700 flex items-center justify-center text-white/50 text-sm">
-                  Accessories
-                </div>
-              </div>
+            <div className="absolute -bottom-8 -right-8 z-20">
+              <DressSpotlight
+                size="medium"
+                title="Accessories"
+                borderColor="purple"
+              />
             </div>
 
-            <div className="absolute bottom-0 right-20 flex space-x-2">
+            <div className="absolute top-16 -right-16 z-5">
+              <DressSpotlight size="small" title="Veil" borderColor="white" />
+            </div>
+
+            <div className="absolute bottom-0 right-20 flex space-x-2 z-30">
               <button className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center hover:border-amber-300 transition-colors">
                 <svg
                   width="12"
@@ -140,6 +144,96 @@ function HomePage() {
                   />
                 </svg>
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl lg:text-5xl font-light text-amber-300 leading-tight">
+              New
+              <br />
+              <span className="text-white">Collection</span>
+            </h2>
+            <p className="text-white/60 font-light">
+              Discover our latest arrivals featuring contemporary designs and
+              timeless elegance for the modern bride.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute top-0 right-0">
+              <DressSpotlight
+                size="medium"
+                title="Majestic Grace Gown"
+                subtitle="25"
+                borderColor="amber"
+              />
+              <div className="text-center mt-4">
+                <h3 className="text-amber-300 font-light text-lg">
+                  Gowns Collection
+                </h3>
+                <p className="text-white/50 text-sm">
+                  Sophisticated silhouettes designed for modern brides.
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute top-16 left-0">
+              <DressSpotlight
+                size="large"
+                title="Blissful Blossom Gown"
+                subtitle="25"
+                borderColor="purple"
+              />
+            </div>
+
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+              <DressSpotlight
+                size="small"
+                title="Umbrellas"
+                borderColor="white"
+              />
+              <div className="text-center mt-2">
+                <p className="text-white/40 text-xs">
+                  Stunning umbrellas with a lovely, graceful charm for all
+                  occasions.
+                </p>
+              </div>
+            </div>
+
+            <div className="absolute bottom-8 right-8">
+              <DressSpotlight
+                size="medium"
+                title="Elegant Romance Dress"
+                subtitle="21"
+                borderColor="amber"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-light text-amber-300 mb-8">
+            Why Elegance Enclave
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="text-center">
+              <div className="text-5xl font-light text-white mb-4">50</div>
+              <p className="text-white/60 font-light">Stunning Bridal Gowns</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-light text-white mb-4">120</div>
+              <p className="text-white/60 font-light">Dress Collections</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-light text-white mb-4">200k</div>
+              <p className="text-white/60 font-light">Satisfied Customers</p>
             </div>
           </div>
         </div>
