@@ -18,6 +18,7 @@ import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChildrenIndexRouteImport } from './routes/children/index'
+import { Route as ChildrenPageBoyRouteImport } from './routes/children/page-boy'
 import { Route as ChildrenFlowerGirlRouteImport } from './routes/children/flower-girl'
 
 const ShoesRoute = ShoesRouteImport.update({
@@ -65,6 +66,11 @@ const ChildrenIndexRoute = ChildrenIndexRouteImport.update({
   path: '/children/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChildrenPageBoyRoute = ChildrenPageBoyRouteImport.update({
+  id: '/children/page-boy',
+  path: '/children/page-boy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChildrenFlowerGirlRoute = ChildrenFlowerGirlRouteImport.update({
   id: '/children/flower-girl',
   path: '/children/flower-girl',
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/prom': typeof PromRoute
   '/shoes': typeof ShoesRoute
   '/children/flower-girl': typeof ChildrenFlowerGirlRoute
+  '/children/page-boy': typeof ChildrenPageBoyRoute
   '/children': typeof ChildrenIndexRoute
 }
 export interface FileRoutesByTo {
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/prom': typeof PromRoute
   '/shoes': typeof ShoesRoute
   '/children/flower-girl': typeof ChildrenFlowerGirlRoute
+  '/children/page-boy': typeof ChildrenPageBoyRoute
   '/children': typeof ChildrenIndexRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/prom': typeof PromRoute
   '/shoes': typeof ShoesRoute
   '/children/flower-girl': typeof ChildrenFlowerGirlRoute
+  '/children/page-boy': typeof ChildrenPageBoyRoute
   '/children/': typeof ChildrenIndexRoute
 }
 export interface FileRouteTypes {
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/prom'
     | '/shoes'
     | '/children/flower-girl'
+    | '/children/page-boy'
     | '/children'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/prom'
     | '/shoes'
     | '/children/flower-girl'
+    | '/children/page-boy'
     | '/children'
   id:
     | '__root__'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/prom'
     | '/shoes'
     | '/children/flower-girl'
+    | '/children/page-boy'
     | '/children/'
   fileRoutesById: FileRoutesById
 }
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   PromRoute: typeof PromRoute
   ShoesRoute: typeof ShoesRoute
   ChildrenFlowerGirlRoute: typeof ChildrenFlowerGirlRoute
+  ChildrenPageBoyRoute: typeof ChildrenPageBoyRoute
   ChildrenIndexRoute: typeof ChildrenIndexRoute
 }
 
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChildrenIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/children/page-boy': {
+      id: '/children/page-boy'
+      path: '/children/page-boy'
+      fullPath: '/children/page-boy'
+      preLoaderRoute: typeof ChildrenPageBoyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/children/flower-girl': {
       id: '/children/flower-girl'
       path: '/children/flower-girl'
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   PromRoute: PromRoute,
   ShoesRoute: ShoesRoute,
   ChildrenFlowerGirlRoute: ChildrenFlowerGirlRoute,
+  ChildrenPageBoyRoute: ChildrenPageBoyRoute,
   ChildrenIndexRoute: ChildrenIndexRoute,
 }
 export const routeTree = rootRouteImport
