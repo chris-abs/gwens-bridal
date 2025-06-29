@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PromRouteImport } from './routes/prom'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BridalRouteImport } from './routes/bridal'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PromRoute = PromRouteImport.update({
+  id: '/prom',
+  path: '/prom',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
+  '/prom': typeof PromRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
+  '/prom': typeof PromRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/bridal': typeof BridalRoute
   '/contact': typeof ContactRoute
+  '/prom': typeof PromRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/bridal' | '/contact'
+  fullPaths: '/' | '/about' | '/bridal' | '/contact' | '/prom'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/bridal' | '/contact'
-  id: '__root__' | '/' | '/about' | '/bridal' | '/contact'
+  to: '/' | '/about' | '/bridal' | '/contact' | '/prom'
+  id: '__root__' | '/' | '/about' | '/bridal' | '/contact' | '/prom'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +76,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BridalRoute: typeof BridalRoute
   ContactRoute: typeof ContactRoute
+  PromRoute: typeof PromRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/prom': {
+      id: '/prom'
+      path: '/prom'
+      fullPath: '/prom'
+      preLoaderRoute: typeof PromRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BridalRoute: BridalRoute,
   ContactRoute: ContactRoute,
+  PromRoute: PromRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
