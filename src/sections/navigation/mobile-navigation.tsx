@@ -1,64 +1,125 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, ChevronRight } from "lucide-react";
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { navigationItems, type NavigationItem } from "@/types/navigation";
 
-function NavItem({ item }: { item: NavigationItem }) {
+function MobileNavItem({
+  item,
+  onItemClick,
+  expandedItems,
+  toggleExpanded,
+}: {
+  item: NavigationItem;
+  onItemClick: () => void;
+  expandedItems: Set<string>;
+  toggleExpanded: (label: string) => void;
+}) {
+  const isExpanded = expandedItems.has(item.label);
+
   if (item.children) {
     return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="text-white/80 hover:text-amber-300 hover:bg-transparent font-light tracking-wide h-auto p-0 gap-1"
-          >
-            {item.label}
-            <ChevronDown className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          className="bg-slate-800 border-slate-700"
+      <div className="space-y-2">
+        <Button
+          variant="ghost"
+          onClick={() => toggleExpanded(item.label)}
+          className="w-full justify-between text-white/80 hover:text-amber-300 hover:bg-slate-800/50 font-light h-auto py-3"
         >
-          {item.children.map((child) => (
-            <DropdownMenuItem key={child.to} asChild>
+          {item.label}
+          {isExpanded ? (
+            <ChevronDown className="h-4 w-4" />
+          ) : (
+            <ChevronRight className="h-4 w-4" />
+          )}
+        </Button>
+        {isExpanded && (
+          <div className="pl-4 space-y-2">
+            {item.children.map((child) => (
               <Link
+                key={child.to}
                 to={child.to!}
-                className="text-white/80 hover:text-amber-300 focus:text-amber-300 cursor-pointer"
+                onClick={onItemClick}
+                className="block py-2 text-white/60 hover:text-amber-300 transition-colors font-light"
               >
                 {child.label}
               </Link>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+            ))}
+          </div>
+        )}
+      </div>
     );
   }
 
   return (
     <Link
       to={item.to!}
-      className="text-white/80 hover:text-amber-300 transition-colors duration-300 font-light tracking-wide"
-      activeProps={{ className: "text-amber-300" }}
+      onClick={onItemClick}
+      className="block py-3 text-white/80 hover:text-amber-300 transition-colors font-light tracking-wide"
     >
       {item.label}
     </Link>
   );
 }
 
-export function DesktopNav() {
+export function MobileNav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+
+  const toggleExpanded = (label: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(label)) {
+      newExpanded.delete(label);
+    } else {
+      newExpanded.add(label);
+    }
+    setExpandedItems(newExpanded);
+  };
+
+  const handleItemClick = () => {
+    setIsOpen(false);
+    setExpandedItems(new Set());
+  };
+
   return (
-    <div className="hidden lg:flex space-x-8 items-center">
-      {navigationItems.map((item) => (
-        <NavItem key={item.label} item={item} />
-      ))}
-    </div>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden text-white/80 hover:text-amber-300 hover:bg-transparent"
+        >
+          <Menu className="h-6 w-6" />
+          <span className="sr-only">Open menu</span>
+        </Button>
+      </SheetTrigger>
+
+      <SheetContent side="right" className="bg-slate-900 border-slate-700 w-80">
+        <SheetHeader className="text-left">
+          <SheetTitle className="text-amber-300 text-2xl font-light tracking-wider">
+            Gwen's Bridal
+          </SheetTitle>
+        </SheetHeader>
+
+        <nav className="mt-8 space-y-1">
+          {navigationItems.map((item) => (
+            <MobileNavItem
+              key={item.label}
+              item={item}
+              onItemClick={handleItemClick}
+              expandedItems={expandedItems}
+              toggleExpanded={toggleExpanded}
+            />
+          ))}
+        </nav>
+      </SheetContent>
+    </Sheet>
   );
 }
