@@ -55,7 +55,7 @@ function NavItem({ item }: { item: NavigationItem }) {
 
 export function DesktopNav() {
   return (
-    <div className="hidden lg:flex space-x-8 items-center">
+    <div className="hidden xl:flex space-x-8 items-center">
       {navigationItems.map((item) => (
         <NavItem key={item.label} item={item} />
       ))}

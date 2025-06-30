@@ -89,37 +89,42 @@ export function MobileNav() {
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden text-white/80 hover:text-amber-300 hover:bg-transparent"
+    <div className="xl:hidden">
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white/80 hover:text-amber-300 hover:bg-transparent"
+          >
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Open menu</span>
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent
+          side="right"
+          className="bg-slate-900 border-slate-700 w-80"
         >
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Open menu</span>
-        </Button>
-      </SheetTrigger>
+          <SheetHeader className="text-left">
+            <SheetTitle className="text-amber-300 text-2xl font-light tracking-wider">
+              Gwen's Bridal
+            </SheetTitle>
+          </SheetHeader>
 
-      <SheetContent side="right" className="bg-slate-900 border-slate-700 w-80">
-        <SheetHeader className="text-left">
-          <SheetTitle className="text-amber-300 text-2xl font-light tracking-wider">
-            Gwen's Bridal
-          </SheetTitle>
-        </SheetHeader>
-
-        <nav className="mt-8 space-y-1">
-          {navigationItems.map((item) => (
-            <MobileNavItem
-              key={item.label}
-              item={item}
-              onItemClick={handleItemClick}
-              expandedItems={expandedItems}
-              toggleExpanded={toggleExpanded}
-            />
-          ))}
-        </nav>
-      </SheetContent>
-    </Sheet>
+          <nav className="mt-8 space-y-1">
+            {navigationItems.map((item) => (
+              <MobileNavItem
+                key={item.label}
+                item={item}
+                onItemClick={handleItemClick}
+                expandedItems={expandedItems}
+                toggleExpanded={toggleExpanded}
+              />
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 }

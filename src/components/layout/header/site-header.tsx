@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
 import { DesktopNav } from "@/sections/navigation/desktop-navigation";
-import { MediumScreenNav } from "@/sections/navigation/responsive-navigation";
 import { MobileNav } from "@/sections/navigation/mobile-navigation";
 
 export function SiteHeader() {
@@ -17,8 +16,6 @@ export function SiteHeader() {
           </Link>
 
           <DesktopNav />
-
-          <MediumScreenNav />
 
           <MobileNav />
         </div>
