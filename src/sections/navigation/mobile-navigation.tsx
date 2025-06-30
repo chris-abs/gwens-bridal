@@ -10,7 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { navigationItems, type NavigationItem } from "@/types/navigation";
+import { mobileNavigationItems, type NavigationItem } from "@/types/navigation";
 
 function MobileNavItem({
   item,
@@ -89,7 +89,7 @@ export function MobileNav() {
   };
 
   return (
-    <div className="xl:hidden">
+    <div className="md:hidden">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button
@@ -113,7 +113,7 @@ export function MobileNav() {
           </SheetHeader>
 
           <nav className="mt-8 space-y-1">
-            {navigationItems.map((item) => (
+            {mobileNavigationItems.map((item) => (
               <MobileNavItem
                 key={item.label}
                 item={item}
