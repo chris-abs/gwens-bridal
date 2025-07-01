@@ -5,7 +5,6 @@ export interface NavigationItem {
 }
 
 export const desktopNavigationItems: NavigationItem[] = [
-  { label: "Home", to: "/" },
   { label: "Bridal", to: "/bridal" },
   { label: "Prom", to: "/prom" },
   {
@@ -28,6 +27,7 @@ export const tabletNavigationItems: NavigationItem[] = [
     children: [
       { label: "Bridal", to: "/bridal" },
       { label: "Prom", to: "/prom" },
+      { label: "Alterations", to: "/alterations" },
     ],
   },
   {
@@ -37,14 +37,23 @@ export const tabletNavigationItems: NavigationItem[] = [
       { label: "Page Boy", to: "/children/page-boy" },
     ],
   },
-  { label: "Accessories", to: "/accessories" },
-  { label: "Shoes", to: "/shoes" },
-  { label: "Alterations", to: "/alterations" },
-  { label: "Contact", to: "/contact" },
+  {
+    label: "Extras",
+    children: [
+      { label: "Accessories", to: "/accessories" },
+      { label: "Shoes", to: "/shoes" },
+    ],
+  },
+  {
+    label: "Shop",
+    children: [
+      { label: "About Us", to: "/about" },
+      { label: "Contact", to: "/contact" },
+    ],
+  },
 ];
 
 export const mobileNavigationItems: NavigationItem[] = [
-  { label: "Home", to: "/" },
   {
     label: "Dresses",
     children: [
