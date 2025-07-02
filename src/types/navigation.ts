@@ -54,20 +54,10 @@ export const tabletNavigationItems: NavigationItem[] = [
 ];
 
 export const mobileNavigationItems: NavigationItem[] = [
-  {
-    label: "Dresses",
-    children: [
-      { label: "Bridal", to: "/bridal" },
-      { label: "Prom", to: "/prom" },
-    ],
-  },
-  {
-    label: "Children",
-    children: [
-      { label: "Flower Girl", to: "/children/flower-girl" },
-      { label: "Page Boy", to: "/children/page-boy" },
-    ],
-  },
+  { label: "Bridal", to: "/bridal" },
+  { label: "Prom", to: "/prom" },
+  { label: "Flower Girl", to: "/children/flower-girl" },
+  { label: "Page Boy", to: "/children/page-boy" },
   { label: "Accessories", to: "/accessories" },
   { label: "Shoes", to: "/shoes" },
   { label: "Alterations", to: "/alterations" },
