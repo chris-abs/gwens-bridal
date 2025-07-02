@@ -61,22 +61,34 @@ export function HeroSection() {
           <div className="relative z-10">
             <DressSpotlight
               size="large"
-              title="Featured Bridal Gown"
-              borderColor="amber"
-              className="mx-auto"
+              imageUrl="/src/assets/bride-with-wedding-dress.png"
+              title="Majestic Grace Gown"
+              subtitle="Elegant and timeless"
+              borderColor="purple"
+              onClick={() => console.log("Dress clicked!")}
             />
           </div>
 
           <div className="absolute -bottom-8 -right-8 z-20">
             <DressSpotlight
               size="medium"
-              title="Accessories"
-              borderColor="purple"
+              imageUrl="https://example.com/dress.jpg"
+              title="Majestic Grace Gown"
+              subtitle="Elegant and timeless"
+              borderColor="white"
+              onClick={() => console.log("Dress clicked!")}
             />
           </div>
 
           <div className="absolute top-16 -right-16 z-5">
-            <DressSpotlight size="small" title="Veil" borderColor="white" />
+            <DressSpotlight
+              size="small"
+              imageUrl="https://example.com/dress.jpg"
+              title="Majestic Grace Gown"
+              subtitle="Elegant and timeless"
+              borderColor="amber"
+              onClick={() => console.log("Dress clicked!")}
+            />{" "}
           </div>
         </div>
       </div>

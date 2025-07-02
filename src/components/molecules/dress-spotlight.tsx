@@ -31,9 +31,11 @@ const sizeClasses = {
 };
 
 const borderColors = {
-  amber: "border-amber-300/40",
-  purple: "border-purple-300/40",
-  white: "border-white/30",
+  amber:
+    "border-amber-300/40 bg-gradient-to-br from-amber-400/30 to-amber-500/20",
+  purple:
+    "border-purple-300/40 bg-gradient-to-br from-purple-400/30 to-purple-500/20",
+  white: "border-white/30 bg-gradient-to-br from-white/20 to-slate-100/10",
 };
 
 export function DressSpotlight({
@@ -50,7 +52,7 @@ export function DressSpotlight({
   return (
     <div
       className={cn(
-        "relative cursor-pointer group transition-all duration-300 hover:scale-105",
+        "relative cursor-pointer group transition-transform duration-300 hover:scale-105",
         sizeConfig.container,
         className
       )}
@@ -60,7 +62,7 @@ export function DressSpotlight({
         className={cn(
           "absolute inset-0 rounded-full border",
           borderColors[borderColor],
-          "group-hover:border-opacity-60 transition-all duration-300"
+          "group-hover:border-opacity-70 transition-all duration-300"
         )}
       />
 
@@ -106,6 +108,17 @@ export function DressSpotlight({
           "blur-sm"
         )}
       />
+
+      {title && (
+        <div className="absolute bottom-2 left-2 right-2 text-center text-white/80 group-hover:text-white transition-all duration-300">
+          <div className="text-sm font-semibold">{title}</div>
+          {subtitle && (
+            <div className="text-xs font-light mt-1 text-white/60">
+              {subtitle}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
