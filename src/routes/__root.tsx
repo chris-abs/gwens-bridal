@@ -10,7 +10,7 @@ export const Route = createRootRoute({
 function RootLayout() {
   return (
     <>
-      <div className="min-h-screen bg-slate-900 text-white">
+      <div className="min-h-screen bg-background">
         <SiteHeader />
         <main className="relative">
           <Outlet />
