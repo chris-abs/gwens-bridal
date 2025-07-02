@@ -1,4 +1,4 @@
-import { useRouter } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 
 const segmentLabels: Record<string, string> = {
   "flower-girl": "Flower Girl",
@@ -16,8 +16,8 @@ const segmentLabels: Record<string, string> = {
 const hiddenRoutes = new Set(["/admin"]);
 
 export function useBreadcrumbs() {
-  const router = useRouter();
-  const pathname = router.state.location.pathname;
+  const location = useLocation();
+  const pathname = location.pathname;
 
   if (hiddenRoutes.has(pathname)) {
     return [];
