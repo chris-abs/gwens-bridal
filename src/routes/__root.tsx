@@ -24,7 +24,7 @@ function RootLayout() {
       <SiteHeader />
 
       {breadcrumbs.length > 0 && (
-        <div className="container mx-auto px-6 py-4 border-b border-white/10">
+        <div className="container mx-auto px-6 py-4 border-t border-white/10">
           <Breadcrumb>
             <BreadcrumbList>
               {breadcrumbs.map((crumb, index) => (

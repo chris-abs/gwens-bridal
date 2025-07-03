@@ -31,7 +31,7 @@ function MobileNavItem({
         <Button
           variant="ghost"
           onClick={() => toggleExpanded(item.label)}
-          className="w-full justify-between text-white/80 hover:text-amber-300 hover:bg-slate-800/50 font-light h-auto py-3"
+          className="w-full justify-between text-muted-foreground hover:text-primary hover:bg-accent/50 font-light h-auto py-3"
         >
           {item.label}
           {isExpanded ? (
@@ -47,7 +47,7 @@ function MobileNavItem({
                 key={child.to}
                 to={child.to!}
                 onClick={onItemClick}
-                className="block py-2 text-white/60 hover:text-amber-300 transition-colors font-light"
+                className="block py-2 text-muted-foreground/80 hover:text-primary transition-colors font-light"
               >
                 {child.label}
               </Link>
@@ -62,7 +62,7 @@ function MobileNavItem({
     <Link
       to={item.to!}
       onClick={onItemClick}
-      className="block py-3 text-white/80 hover:text-amber-300 transition-colors font-light tracking-wide"
+      className="block py-3 text-muted-foreground hover:text-primary transition-colors font-light tracking-wide"
     >
       {item.label}
     </Link>
@@ -95,19 +95,16 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-white/80 hover:text-amber-300 hover:bg-transparent"
+            className="text-muted-foreground hover:text-primary hover:bg-transparent"
           >
             <Menu className="h-6 w-6" />
             <span className="sr-only">Open menu</span>
           </Button>
         </SheetTrigger>
 
-        <SheetContent
-          side="right"
-          className="bg-slate-900 border-slate-700 w-80"
-        >
+        <SheetContent side="right" className="bg-card border-border w-80">
           <SheetHeader className="text-left">
-            <SheetTitle className="text-amber-300 text-2xl font-light tracking-wider">
+            <SheetTitle className="text-primary text-2xl font-light tracking-wider">
               Gwen's Bridal
             </SheetTitle>
           </SheetHeader>

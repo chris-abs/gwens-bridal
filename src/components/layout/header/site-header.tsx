@@ -11,7 +11,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="text-3xl font-light tracking-wider text-amber-300 hover:text-amber-400 transition-colors"
+            className="text-3xl font-light tracking-wider text-primary hover:text-primary/80 transition-colors"
           >
             Gwen's Bridal
           </Link>
