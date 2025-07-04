@@ -6,7 +6,6 @@ type Theme = "light" | "dark";
 interface SettingsState {
   theme: Theme;
   toggleTheme: () => void;
-  initializeTheme: () => void;
 }
 
 const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -31,10 +30,6 @@ export const useSettingsStore = create<SettingsState>()(
         set({ theme: newTheme });
         applyThemeToDOM(newTheme);
       },
-      initializeTheme: () => {
-        const { theme } = get();
-        applyThemeToDOM(theme);
-      },
     }),
     {
       name: "gwen-bridal-settings",
@@ -42,7 +37,7 @@ export const useSettingsStore = create<SettingsState>()(
       partialize: (state) => ({ theme: state.theme }),
       onRehydrateStorage: () => (state) => {
         if (state) {
-          state.initializeTheme();
+          applyThemeToDOM(state.theme);
         }
       },
     }

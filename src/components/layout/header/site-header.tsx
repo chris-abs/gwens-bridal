@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 
 import { DesktopNav } from "@/sections/navigation/desktop-navigation";
 import { MobileNav } from "@/sections/navigation/mobile-navigation";
-import { TabletNav } from "@/sections/navigation/tablet-navigation";
 
 export function SiteHeader() {
   return (
@@ -16,8 +15,6 @@ export function SiteHeader() {
             Gwen's Bridal
           </Link>
           <DesktopNav />
-
-          <TabletNav />
 
           <MobileNav />
         </div>
