@@ -3,8 +3,8 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { NavItem } from "@/components/atoms/nav-item";
-import { desktopNavigationItems } from "@/types/navigation";
 import { ThemeToggle } from "@/components/molecules";
+import { desktopNavigationItems } from "@/types/navigation";
 
 export function DesktopNav() {
   return (
