@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 import { DesktopNav } from "@/sections/navigation/desktop-navigation";
 import { MobileNav } from "@/sections/navigation/mobile-navigation";
+import { ThemeToggle } from "@/components/molecules";
+import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -14,9 +16,21 @@ export function SiteHeader() {
           >
             Gwen's Bridal
           </Link>
-          <DesktopNav />
 
-          <MobileNav />
+          <div className="hidden md:flex flex-1 justify-center">
+            <DesktopNav />
+          </div>
+
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              className="text-muted-foreground hover:bg-accent/50 transition-colors gap-2"
+            >
+              <span className="hidden sm:inline">Admin</span>
+            </Button>
+            <MobileNav />
+          </div>
         </div>
       </div>
     </header>

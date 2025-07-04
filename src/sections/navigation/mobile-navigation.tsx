@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { mobileNavigationItems, type NavigationItem } from "@/types/navigation";
-import { ThemeToggle } from "@/components/molecules";
 
 function MobileNavItem({
   item,
@@ -91,7 +90,6 @@ export function MobileNav() {
 
   return (
     <div className="md:hidden flex items-center gap-2">
-      <ThemeToggle />
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button

@@ -3,12 +3,11 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { NavItem } from "@/components/atoms/nav-item";
-import { ThemeToggle } from "@/components/molecules";
 import { desktopNavigationItems } from "@/types/navigation";
 
 export function DesktopNav() {
   return (
-    <div className="hidden md:flex items-center gap-4">
+    <div className="sticky top-4 z-40 bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg px-4 py-2 shadow-sm">
       <NavigationMenu className="relative">
         <NavigationMenuList className="flex space-x-2">
           {desktopNavigationItems.map((item) => (
@@ -16,7 +15,6 @@ export function DesktopNav() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <ThemeToggle />
     </div>
   );
 }
