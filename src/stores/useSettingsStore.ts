@@ -1,40 +1,48 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark";
 
 interface SettingsState {
   theme: Theme;
-  applyTheme: (newTheme: Theme) => void;
+  toggleTheme: () => void;
+  initializeTheme: () => void;
 }
 
 const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
+const getInitialTheme = (): Theme => {
+  return darkModeQuery.matches ? "dark" : "light";
+};
+
 const applyThemeToDOM = (theme: Theme) => {
   const root = document.documentElement;
-  const systemTheme = darkModeQuery.matches ? "dark" : "light";
-  const effectiveTheme = theme === "system" ? systemTheme : theme;
-
   root.classList.remove("light", "dark");
-  root.classList.add(effectiveTheme);
+  root.classList.add(theme);
 };
 
 export const useSettingsStore = create<SettingsState>()(
   persist(
-    (set) => ({
-      theme: "system",
-      applyTheme: (newTheme) => {
+    (set, get) => ({
+      theme: getInitialTheme(),
+      toggleTheme: () => {
+        const currentTheme = get().theme;
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
         set({ theme: newTheme });
         applyThemeToDOM(newTheme);
       },
+      initializeTheme: () => {
+        const { theme } = get();
+        applyThemeToDOM(theme);
+      },
     }),
     {
-      name: "profile-settings",
+      name: "gwen-bridal-settings",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ theme: state.theme }),
       onRehydrateStorage: () => (state) => {
         if (state) {
-          applyThemeToDOM(state.theme);
+          state.initializeTheme();
         }
       },
     }
