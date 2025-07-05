@@ -10,8 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useBreadcrumbs } from "@/lib/breadcrumbs";
-import { SiteFooter, SiteHeader } from "@/components/layout";
-import { CarouselSection } from "@/sections/shared";
+import { SiteFooter, SiteHeader, CarouselSection } from "@/sections";
 import { shouldDisplayCarousel } from "@/types/images";
 
 export const Route = createRootRoute({

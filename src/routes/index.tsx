@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { HeroSection } from "@/sections/home/hero-section";
+import { HeroSection } from "@/sections";
 
 export const Route = createFileRoute("/")({
   component: HomePage,

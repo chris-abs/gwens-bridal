@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { DesktopNav } from "@/sections/shared/navigation/desktop-navigation";
-import { MobileNav } from "@/sections/shared/navigation/mobile-navigation";
+import { DesktopNav, MobileNav } from "@/sections";
 import { ThemeToggle } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 
