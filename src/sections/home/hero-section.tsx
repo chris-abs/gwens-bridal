@@ -1,4 +1,3 @@
-import { CTAButton } from "@/components/atoms";
 import { DressSpotlight } from "@/components/molecules/dress-spotlight";
 
 export function HeroSection() {
@@ -45,15 +44,6 @@ export function HeroSection() {
                 and expert craftsmanship, ensuring lasting beauty and comfort.
               </p>
             </div>
-          </div>
-
-          <div className="flex space-x-4">
-            <CTAButton to="/bridal" variant="primary">
-              View Collection
-            </CTAButton>
-            <CTAButton to="/contact" variant="secondary">
-              Book Consultation
-            </CTAButton>
           </div>
         </div>
 

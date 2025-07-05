@@ -20,7 +20,7 @@ function RootLayout() {
   const breadcrumbs = useBreadcrumbs();
 
   return (
-    <div className="min-h-screen bg-neutral-800 text-white">
+    <div className="min-h-screen">
       <SiteHeader />
 
       {breadcrumbs.length > 0 && (
@@ -31,20 +31,20 @@ function RootLayout() {
                 <React.Fragment key={crumb.href}>
                   <BreadcrumbItem>
                     {index === breadcrumbs.length - 1 ? (
-                      <BreadcrumbPage className="text-amber-300">
+                      <BreadcrumbPage className="text-primary cursor-default">
                         {crumb.label}
                       </BreadcrumbPage>
                     ) : (
                       <BreadcrumbLink
                         href={crumb.href}
-                        className="text-white/60 hover:text-amber-300 transition-colors"
+                        className="text-muted-foreground hover:text-accent-foreground transition-colors"
                       >
                         {crumb.label}
                       </BreadcrumbLink>
                     )}
                   </BreadcrumbItem>
                   {index < breadcrumbs.length - 1 && (
-                    <BreadcrumbSeparator className="text-white/40" />
+                    <BreadcrumbSeparator className="text-muted-foreground" />
                   )}
                 </React.Fragment>
               ))}

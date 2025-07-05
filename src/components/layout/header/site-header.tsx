@@ -13,7 +13,7 @@ export function SiteHeader() {
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="text-3xl font-light tracking-wider text-primary hover:text-primary/80 transition-colors"
+              className="text-3xl font-light tracking-wider text-primary hover:text-primary transition-colors"
             >
               Gwen's Bridal
             </Link>
@@ -24,7 +24,7 @@ export function SiteHeader() {
               <ThemeToggle />
               <Button
                 variant="ghost"
-                className="text-muted-foreground hover:text-amber-300 hover:bg-accent/50 transition-colors gap-2"
+                className="text-muted-foreground hover:text-accent-foreground hover:bg-accent/50 transition-colors gap-2"
               >
                 <h3 className="hidden sm:inline">Admin</h3>
               </Button>
