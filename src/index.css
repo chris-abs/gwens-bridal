@@ -187,13 +187,6 @@
   font-family: "Playfair Display", serif;
 }
 
-button:focus,
-input:focus,
-textarea:focus {
-  outline: 2px solid #fbbf24;
-  outline-offset: 2px;
-}
-
 @media (max-width: 768px) {
   .text-8xl {
     font-size: 4rem;
