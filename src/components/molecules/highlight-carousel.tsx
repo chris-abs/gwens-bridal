@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
-export default function CarouselWithPagination() {
+export default function HighlightCarousel() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
