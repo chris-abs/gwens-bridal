@@ -1,5 +1,6 @@
-import { PageHeader, Section } from "@/sections";
 import { createFileRoute } from "@tanstack/react-router";
+
+import { PageHeader, Section } from "@/sections";
 
 export const Route = createFileRoute("/bridal")({
   component: BridalPage,
