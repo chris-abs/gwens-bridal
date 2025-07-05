@@ -1,5 +1,5 @@
-import React from "react";
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import React, { Suspense } from "react";
+import { createRootRoute, Outlet, useLocation } from "@tanstack/react-router";
 
 import {
   Breadcrumb,
@@ -11,13 +11,27 @@ import {
 } from "@/components/ui/breadcrumb";
 import { useBreadcrumbs } from "@/lib/breadcrumbs";
 import { SiteFooter, SiteHeader } from "@/components/layout";
+import { CarouselSection } from "@/sections/shared";
+import { shouldDisplayCarousel } from "@/types/images";
 
 export const Route = createRootRoute({
   component: RootLayout,
 });
 
+function CarouselFallback() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center justify-center min-h-[300px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+      </div>
+    </div>
+  );
+}
+
 function RootLayout() {
   const breadcrumbs = useBreadcrumbs();
+  const location = useLocation();
+  const showCarousel = shouldDisplayCarousel(location.pathname);
 
   return (
     <div className="min-h-screen">
@@ -51,6 +65,12 @@ function RootLayout() {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+      )}
+
+      {showCarousel && (
+        <Suspense fallback={<CarouselFallback />}>
+          <CarouselSection />
+        </Suspense>
       )}
 
       <main className="relative">
