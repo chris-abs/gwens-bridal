@@ -33,7 +33,7 @@ function RootLayout() {
   const showCarousel = shouldDisplayCarousel(location.pathname);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <SiteHeader />
 
       {breadcrumbs.length > 0 && (

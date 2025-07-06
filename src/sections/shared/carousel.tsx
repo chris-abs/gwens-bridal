@@ -41,7 +41,7 @@ export function CarouselSection() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 border-b border-border/50">
+    <div className="container mx-auto px-4 py-8 ">
       <ProductCarousel
         images={images}
         aspectRatio="portrait"
