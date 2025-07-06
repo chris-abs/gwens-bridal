@@ -3,82 +3,41 @@ import { DressSpotlight } from "@/components/molecules/dress-spotlight";
 export function HeroSection() {
   return (
     <section className="container mx-auto px-6 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-        <div className="space-y-8">
-          <div className="space-y-2">
-            <p className="text-purple-300 font-light tracking-widest uppercase text-sm">
-              Premium Bridal Collection
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-center justify-items-center">
+        <DressSpotlight
+          src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=600&fit=crop"
+          alt="Elegant bridal portrait"
+          size="small"
+        >
+          <div className="text-center">
+            <p className="text-amber-200 text-sm font-medium">Timeless</p>
+            <p className="text-amber-100/80 text-xs">Elegance</p>
+          </div>
+        </DressSpotlight>
+        <DressSpotlight
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&h=700&fit=crop"
+          alt="Beautiful wedding gown"
+          size="medium"
+        >
+          <div className="text-center">
+            <p className="text-amber-200 text-base font-medium">
+              Sophisticated
             </p>
-            <h1 className="text-6xl lg:text-7xl xl:text-8xl font-light text-amber-300 leading-tight">
-              Gwen's
-              <br />
-              <span className="text-white">Bridal</span>
-              <br />
-              <span className="text-purple-300">Elegance</span>
-            </h1>
-            <p className="text-xl text-white/70 font-light italic">by GWEN</p>
+            <p className="text-amber-100/80 text-sm">Grace</p>
           </div>
-
-          <div className="grid grid-cols-3 gap-6 py-8">
-            <div className="text-center">
-              <h3 className="text-white text-sm font-light mb-2">
-                Elegant bridal designs
-              </h3>
-              <p className="text-white/50 text-xs font-light">
-                combining traditional & contemporary styles for every bride.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-white text-sm font-light mb-2">
-                Personalized fittings
-              </h3>
-              <p className="text-white/50 text-xs font-light">
-                & custom tailoring for perfect, individualized bridal look.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-white text-sm font-light mb-2">
-                Premium quality fabrics
-              </h3>
-              <p className="text-white/50 text-xs font-light">
-                and expert craftsmanship, ensuring lasting beauty and comfort.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        </DressSpotlight>
         <div className="relative">
           <div className="relative z-10">
             <DressSpotlight
+              src="https://picsum.photos/400/600?random=40"
+              alt="Elegant bridal portrait"
               size="large"
-              imageUrl="/src/assets/bride-with-wedding-dress.png"
-              title="Majestic Grace Gown"
-              subtitle="Elegant and timeless"
-              borderColor="purple"
-              onClick={() => console.log("Dress clicked!")}
-            />
-          </div>
-
-          <div className="absolute -bottom-8 -right-8 z-20">
-            <DressSpotlight
-              size="medium"
-              imageUrl="https://example.com/dress.jpg"
-              title="Majestic Grace Gown"
-              subtitle="Elegant and timeless"
-              borderColor="white"
-              onClick={() => console.log("Dress clicked!")}
-            />
-          </div>
-
-          <div className="absolute top-16 -right-16 z-5">
-            <DressSpotlight
-              size="small"
-              imageUrl="https://example.com/dress.jpg"
-              title="Majestic Grace Gown"
-              subtitle="Elegant and timeless"
-              borderColor="amber"
-              onClick={() => console.log("Dress clicked!")}
-            />{" "}
+            >
+              <div className="text-center">
+                <p className="text-amber-200 text-sm font-medium">Timeless</p>
+                <p className="text-amber-100/80 text-xs">Elegance</p>
+              </div>
+            </DressSpotlight>
           </div>
         </div>
       </div>

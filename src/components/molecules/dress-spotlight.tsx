@@ -1,124 +1,83 @@
+import React from "react";
+
 import { cn } from "@/lib/utils";
 
 type SpotlightSize = "small" | "medium" | "large";
 
 interface DressSpotlightProps {
+  src: string;
+  alt: string;
   size?: SpotlightSize;
-  imageUrl?: string;
-  title?: string;
-  subtitle?: string;
   className?: string;
-  borderColor?: "amber" | "purple" | "white";
-  onClick?: () => void;
+  children?: React.ReactNode;
 }
 
-const sizeClasses = {
+const sizeVariants = {
   small: {
-    container: "w-32 h-44",
-    border: "p-1",
-    content: "p-2",
+    container: "w-48 h-96",
+    border: "border-2",
+    gap: "p-1.5",
   },
   medium: {
-    container: "w-40 h-56",
-    border: "p-1.5",
-    content: "p-3",
+    container: "w-64 h-[480px]",
+    border: "border-2",
+    gap: "p-1.5",
   },
   large: {
-    container: "w-48 h-72",
-    border: "p-2",
-    content: "p-4",
+    container: "w-72 h-[580px]",
+    border: "border-2",
+    gap: "p-1.5",
   },
-};
+} as const;
 
-const borderColors = {
-  amber:
-    "border-amber-300/40 bg-gradient-to-br from-amber-400/30 to-amber-500/20",
-  purple:
-    "border-purple-300/40 bg-gradient-to-br from-purple-400/30 to-purple-500/20",
-  white: "border-white/30 bg-gradient-to-br from-white/20 to-slate-100/10",
-};
-
-export function DressSpotlight({
+export const DressSpotlight = ({
+  src,
+  alt,
   size = "medium",
-  imageUrl,
-  title,
-  subtitle,
   className,
-  borderColor = "amber",
-  onClick,
-}: DressSpotlightProps) {
-  const sizeConfig = sizeClasses[size];
+  children,
+}: DressSpotlightProps) => {
+  const variant = sizeVariants[size];
 
   return (
     <div
       className={cn(
-        "relative cursor-pointer group transition-transform duration-300 hover:scale-105",
-        sizeConfig.container,
+        "relative group cursor-pointer transition-all duration-300 hover:scale-105",
+        variant.container,
         className
       )}
-      onClick={onClick}
     >
       <div
         className={cn(
-          "absolute inset-0 rounded-full border",
-          borderColors[borderColor],
-          "group-hover:border-opacity-70 transition-all duration-300"
-        )}
-      />
-
-      <div
-        className={cn(
-          "absolute rounded-full overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/80",
-          "group-hover:from-slate-700/50 group-hover:to-slate-800/80 transition-all duration-300",
-          sizeConfig.border,
-          "inset-0"
+          "absolute inset-0 rounded-full border-amber-200/60 bg-gradient-to-br from-amber-100/10 via-transparent to-amber-200/10 border-2",
+          variant.border
         )}
       >
         <div
           className={cn(
-            "w-full h-full rounded-full overflow-hidden",
-            sizeConfig.content
+            "absolute inset-0 flex items-center justify-center",
+            variant.gap
           )}
         >
-          {imageUrl ? (
+          <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-full">
             <img
-              src={imageUrl}
-              alt={title || "Dress"}
-              className="w-full h-full object-cover"
+              src={src}
+              alt={alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rounded-full"
             />
-          ) : (
-            <div className="w-full h-full bg-slate-700/50 flex flex-col items-center justify-center text-white/60 text-center">
-              <div className="text-xs font-light">
-                {title || "Featured Dress"}
+
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 rounded-full" />
+
+            {children && (
+              <div className="absolute inset-0 flex items-end justify-center pb-6">
+                {children}
               </div>
-              {subtitle && (
-                <div className="text-xs text-white/40 mt-1">{subtitle}</div>
-              )}
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
-      <div
-        className={cn(
-          "absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300",
-          borderColor === "amber" && "bg-amber-300",
-          borderColor === "purple" && "bg-purple-300",
-          borderColor === "white" && "bg-white",
-          "blur-sm"
-        )}
-      />
-
-      {title && (
-        <div className="absolute bottom-2 left-2 right-2 text-center text-white/80 group-hover:text-white transition-all duration-300">
-          <div className="text-sm font-semibold">{title}</div>
-          {subtitle && (
-            <div className="text-xs font-light mt-1 text-white/60">
-              {subtitle}
-            </div>
-          )}
-        </div>
-      )}
+      <div className="absolute inset-0 bg-amber-200/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm rounded-full" />
     </div>
   );
-}
+};
