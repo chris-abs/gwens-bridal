@@ -102,7 +102,7 @@ export function MobileNav() {
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="right" className="bg-card border-border w-80">
+        <SheetContent side="right" className="bg-card w-80">
           <SheetHeader className="text-left">
             <SheetTitle className="text-primary text-2xl font-light tracking-wider">
               Gwen's Bridal
