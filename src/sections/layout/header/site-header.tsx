@@ -1,10 +1,21 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 import { DesktopNav, MobileNav } from "@/sections";
 import { ThemeToggle } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useAuthStore } from "@/stores/useAuthStore";
+// import { LoginForm } from "@/components/molecules/login-form";
 
 export function SiteHeader() {
+  const { isAuthenticated, logout } = useAuthStore();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsDialogOpen(false);
+  };
+
   return (
     <>
       <header className="relative z-30">
@@ -21,12 +32,33 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-3">
               <ThemeToggle />
-              <Button
-                variant="ghost"
-                className="text-muted-foreground hover:text-accent-foreground hover:bg-accent/50 transition-colors gap-2"
-              >
-                <h3 className="hidden sm:inline">Admin</h3>
-              </Button>
+
+              {isAuthenticated ? (
+                <Button
+                  onClick={logout}
+                  variant="ghost"
+                  className="text-muted-foreground hover:text-accent-foreground hover:bg-accent/50 transition-colors"
+                >
+                  <span className="hidden sm:inline">Logout</span>
+                  <span className="sm:hidden">⏻</span>
+                </Button>
+              ) : (
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="text-muted-foreground hover:text-accent-foreground hover:bg-accent/50 transition-colors"
+                    >
+                      <span className="hidden sm:inline">Admin</span>
+                      <span className="sm:hidden">👤</span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    {/* <LoginForm onSuccess={handleLoginSuccess} /> */}
+                  </DialogContent>
+                </Dialog>
+              )}
+
               <MobileNav />
             </div>
           </div>
