@@ -4,9 +4,9 @@ import { Link } from "@tanstack/react-router";
 import { DesktopNav, MobileNav } from "@/sections";
 import { ThemeToggle } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
+import { LoginForm } from "@/components/organisms";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useAuthStore } from "@/stores/useAuthStore";
-// import { LoginForm } from "@/components/molecules/login-form";
 
 export function SiteHeader() {
   const { isAuthenticated, logout } = useAuthStore();
@@ -54,7 +54,7 @@ export function SiteHeader() {
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-md">
-                    {/* <LoginForm onSuccess={handleLoginSuccess} /> */}
+                    <LoginForm onSuccess={handleLoginSuccess} />
                   </DialogContent>
                 </Dialog>
               )}
