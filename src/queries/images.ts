@@ -1,27 +1,36 @@
-import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "@tanstack/react-router";
+import { useAuthStore } from "@/stores/useAuthStore";
 
-import { imageQueries } from "@/api/images";
-import { mockImages } from "@/lib/mock-data/images";
-import { getImageCategoryFromRoute } from "@/types/images";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
-export function useProductImages() {
-  const location = useLocation();
-  const category = getImageCategoryFromRoute(location.pathname);
-
-  return useQuery({
-    queryKey: ["images", category],
-    queryFn: () => {
-      return Promise.resolve(category ? mockImages[category] || [] : []);
-    },
-    // TODO: when the BE is ready for image fetching
-    // queryFn: () => fetchImagesByCategory(category)
-    enabled: Boolean(category),
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-  });
+export async function fetchImagesByCategory(category: string) {
+  const response = await fetch(`${API_BASE}/api/images?category=${category}`);
+  if (!response.ok) throw new Error("Failed to fetch images");
+  return response.json();
 }
 
-export function useProductImagesForCategory(category: string) {
-  return useQuery(imageQueries.byCategory(category));
+export async function uploadImage(file: File, category: string) {
+  const token = useAuthStore.getState().token;
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("category", category);
+
+  const response = await fetch(`${API_BASE}/api/admin/images`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!response.ok) throw new Error("Upload failed");
+  return response.json();
+}
+
+export async function deleteImage(id: number) {
+  const token = useAuthStore.getState().token;
+  const response = await fetch(`${API_BASE}/api/admin/images/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!response.ok) throw new Error("Delete failed");
+  return response.json();
 }
