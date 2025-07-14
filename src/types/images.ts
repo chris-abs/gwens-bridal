@@ -1,14 +1,10 @@
 export interface ProductImage {
-  id: string;
+  id: number;
+  filename: string;
+  url: string;
   category: ProductCategory;
-  title: string;
-  subtitle?: string;
-  imageUrl: string;
-  alt: string;
-  featured: boolean;
-  order: number;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  is_active: boolean;
 }
 
 export type ProductCategory = "bridal" | "prom" | "flower-girl" | "page-boy";
